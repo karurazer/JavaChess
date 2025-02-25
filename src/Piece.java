@@ -16,6 +16,8 @@ abstract public class Piece {
     private int cost;
     private String pieceType;
 
+    public abstract boolean canMove(String toChessLocation, Piece[][] board);
+
     public Piece(String chessLocation, int color) {
         this.color = color;
         int[] move = chessLocationToXY(chessLocation);
@@ -70,7 +72,7 @@ abstract public class Piece {
         return pieceType;
     }
 
-    public String getPreCheessLocation() {
+    public String getPrevChessLocation() {
         return prevChessLocation;
     }
     private void setPrevLocation(String prevChessLocation) {
@@ -166,8 +168,12 @@ abstract public class Piece {
 
         return new int[]{file - 'A', rank - '1'};
     }
+
+    public int getPrevLocationY() {
+        return prevLocationY;
+    }
+
+    public int getPrevLocationX() {
+        return prevLocationX;
+    }
 }
-
-
-
-

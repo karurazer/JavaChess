@@ -6,4 +6,10 @@ public class Rook extends Piece {
     public Rook(String chessLocation, int color) {
         super(chessLocation, color);
     }
+
+    @Override
+    public boolean canMove(String toChessLocation, Piece[][] board){
+        return true;
+
+    }
 }

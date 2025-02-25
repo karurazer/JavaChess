@@ -6,4 +6,9 @@ public class King extends Piece {
     public King(String chessLocation, int color) {
         super(chessLocation, color);
     }
+    @Override
+    public boolean canMove(String toChessLocation, Piece[][] board){
+        return true;
+
+    }
 }
