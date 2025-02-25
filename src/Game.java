@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Game {
-    private Board chessboard = new Board();
+    private final Board chessboard = new Board();
 
     public Game() {
         chessboard.setPiece(new Pawn("A2", 1));
@@ -21,6 +21,12 @@ public class Game {
         chessboard.setPiece(new Bishop(5, 0, 1));
         chessboard.setPiece(new Knight(6, 0, 1));
         chessboard.setPiece(new Rook(7, 0, 1));
+
+        chessboard.setPiece(new Pawn("A7", 0));
+        chessboard.setPiece(new Pawn("B7", 0));
+        chessboard.setPiece(new Pawn("C7", 0));
+        chessboard.setPiece(new Pawn("D7", 0));
+        chessboard.setPiece(new Pawn("E7", 0));
     }
 
     public void game_loop() {

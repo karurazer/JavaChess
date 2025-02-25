@@ -1,5 +1,5 @@
 public class Board {
-    private Piece[][] chessboard;
+    private final Piece[][] chessboard;
     private final int rows;
     private final int columns;
 
@@ -53,7 +53,7 @@ public class Board {
             chessboard[location[1]][location[0]] = null;
             return;
         }
-        piece.setLocation(location[1], location[0]);
+        piece.setLocation(location[0], location[1]);
         chessboard[location[1]][location[0]] = piece;
     }
 
@@ -67,16 +67,20 @@ public class Board {
     }
 
     public void movePiece(String[] move) {
-        String fmove = move[0];
-        String smove = move[1];
-        Piece piece = getPiece(fmove);
+        String fromMove = move[0];
+        String toMove = move[1];
+        Piece piece = getPiece(fromMove);
         if (piece == null) {
             System.out.println("Error: on " + move[0] + " no figure for move.");
             return;
         }
-        setPiece(piece, smove);
-        setPiece(null, fmove);
-        System.out.println(piece.getColor() + " " + piece.getPieceType()  + " from " + piece.getPreCheessLocation() + " to " + piece.getChessLocation() + " cost: " + piece.getCost());
+        if (piece.canMove(toMove, chessboard)) {
+            setPiece(piece, toMove);
+            setPiece(null, fromMove);
+            System.out.println(piece.getColor() + " " + piece.getPieceType() + " from " + piece.getPrevChessLocation() + " to " + piece.getChessLocation() + " cost: " + piece.getCost());
+        } else {
+            System.out.println("Impossible move for " + piece.getColor() + " " + piece.getPieceType() + " from " + fromMove + " to " + toMove + " cost: " + piece.getCost());
+        }
     }
 
 }
