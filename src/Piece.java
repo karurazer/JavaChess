@@ -11,8 +11,6 @@ abstract public class Piece {
     private int prevLocationY;
     private String prevChessLocation;
 
-
-    private boolean isAlive = true;
     private int cost;
     private String pieceType;
 
@@ -51,14 +49,6 @@ abstract public class Piece {
             case WHITE -> "WHITE";
             default -> null;
         };
-    }
-
-    public boolean isAlive() {
-        return isAlive;
-    }
-
-    public void setDeath() {
-        isAlive = false;
     }
 
     public String getChessLocation() {
