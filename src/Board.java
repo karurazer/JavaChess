@@ -35,7 +35,6 @@ public class Board {
             System.out.println();
         }
         System.out.println("  A B C D E F G H");
-
     }
 
     private Piece getPiece(int[] location) {
@@ -63,17 +62,20 @@ public class Board {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
     }
 
     public void movePiece(String[] move) {
         String fromMove = move[0];
         String toMove = move[1];
         Piece piece = getPiece(fromMove);
+
         if (piece == null) {
             System.out.println("Error: on " + move[0] + " no figure for move.");
             return;
         }
+
+        Piece.chessLocationToXY(toMove);
+
         if (piece.canMove(toMove, chessboard)) {
             setPiece(piece, toMove);
             setPiece(null, fromMove);
