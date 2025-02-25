@@ -22,16 +22,17 @@ abstract public class Piece {
         this.color = color;
         int[] move = chessLocationToXY(chessLocation);
         this.chessLocation = chessLocation;
-        this.locationX = move[0];
-        this.locationY = move[1];
+        setPrevLocation(move[0], move[1]);
+        setLocation(move[0], move[1]);
         setCost();
         setPieceType();
     }
 
     public Piece(int locationX, int locationY, int color) {
         this.color = color;
-        setLocation(locationX, locationY);
         this.chessLocation = XYToChessLocation(locationX, locationY);
+        setPrevLocation(locationX, locationY);
+        setLocation(locationX, locationY);
         setCost();
         setPieceType();
     }

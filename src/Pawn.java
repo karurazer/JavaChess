@@ -17,16 +17,19 @@ public class Pawn extends Piece {
 
         int fromX = from[0], fromY = from[1];
         int toX = to[0], toY = to[1];
-        int direction = (Objects.equals(this.getColor(), "WHITE")) ? 1: -1;
+        int direction = (Objects.equals(this.getColor(), "WHITE")) ? 1 : -1;
 
         if (toX == fromX && toY == fromY + direction && board[toY][toX] == null) {
             return true;
         }
 
-        if (toX == fromX && toY == fromY + (direction * 2) && board[toY][toX] == null && board[toY - direction][toX] == null && this.getPrevChessLocation() == null) {
+        if (toX == fromX && toY == fromY + (direction * 2) && board[toY][toX] == null && board[toY - direction][toX] == null && Objects.equals(this.getPrevChessLocation(), this.getChessLocation())) {
             return true;
         }
 
+        if (Math.abs(toX - fromX) == 1 && toY == fromY + direction && board[toY][toX] != null && !Objects.equals(board[toY][toX].getColor(), this.getColor())) {
+            return true;
+        }
 
         return false;
     }
