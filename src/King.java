@@ -6,6 +6,7 @@ public class King extends Piece {
     public King(String chessLocation, int color) {
         super(chessLocation, color);
     }
+
     @Override
     public boolean canMove(String toChessLocation, Piece[][] board) {
         int[] from = chessLocationToXY(this.getChessLocation());
@@ -23,6 +24,24 @@ public class King extends Piece {
         }
 
         return true;
+    }
+
+    private boolean isSquareUnderAttack(int x, int y, Piece[][] board) {
+        for (Piece[] row : board) {
+            for (Piece piece : row) {
+                if (piece != null && !piece.getColor().equals(this.getColor()) && piece.canMove(Piece.XYToChessLocation(x, y), board)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean isInCheck(Piece[][] board) {
+        int[] pos = chessLocationToXY(this.getChessLocation());
+        int x = pos[0], y = pos[1];
+
+        return isSquareUnderAttack(x, y, board);
     }
 
 }

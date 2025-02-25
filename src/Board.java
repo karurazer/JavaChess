@@ -34,11 +34,12 @@ public class Board {
             }
             System.out.println();
         }
-        System.out.println("  A B C D E F G H");
-    }
-
-    private Piece getPiece(int[] location) {
-        return chessboard[location[1]][location[0]];
+        System.out.print(" ");
+        for (int s = 0; s < columns; s++){
+            System.out.print(" ");
+            System.out.print((char) ('A' + s));
+        }
+        System.out.println();
     }
 
     private Piece getPiece(String chessLocation) {
@@ -74,7 +75,7 @@ public class Board {
             return;
         }
 
-        Piece.chessLocationToXY(toMove);
+        Piece.checkLocation(toMove);
 
         if (piece.canMove(toMove, chessboard)) {
             setPiece(piece, toMove);

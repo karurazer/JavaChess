@@ -103,7 +103,7 @@ abstract public class Piece {
         }
     }
 
-    private static void checkLocation(String chessLocation) {
+    public static void checkLocation(String chessLocation) {
         if (chessLocation == null || chessLocation.length() != 2) {
             throw new IllegalArgumentException("Incorrect coordinates: " + chessLocation);
         }
@@ -116,7 +116,7 @@ abstract public class Piece {
         }
     }
 
-    private static void checkLocation(int locationX, int locationY) {
+    public static void checkLocation(int locationX, int locationY) {
         if (locationX < 0 || locationX > 7 || locationY < 0 || locationY > 7) {
             throw new IllegalArgumentException("Coordinates out of bounds: " + locationX + ", " + locationY);
         }
